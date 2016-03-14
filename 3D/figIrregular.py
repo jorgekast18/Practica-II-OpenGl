@@ -23,19 +23,13 @@ from math import pi
 
 def initGL(width, height):
   glClearColor(0.5, 0.5, 0.5, 0.0)
-  glColor3f(0.0, 0.0, 0.5)
+  glColor3f(0.0, 0.25, 0.5)
   glMatrixMode(GL_PROJECTION)
 
 def dibujarCuadrado():
-  glClear(GL_COLOR_BUFFER_BIT)
-
-  glBegin(GL_TRIANGLES)
-  glVertex3f(0.0, 0.5, 0.0)
-  glVertex3f(0.5, -0.5, 0.0)
-  glVertex3f(-0.5, -0.5, 0.0)
-  glEnd()
-  glFlush()
-  #glutSwapBuffers();
+  glClear (GL_COLOR_BUFFER_BIT)
+  glutSolidCube(0.5)
+  glFlush ()
 
 def gradosAradianes(grados):
   return (grados*pi)/180

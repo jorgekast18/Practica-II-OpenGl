@@ -45,16 +45,16 @@ def keyPressed(*args):
   elif key == "s" or key == "s":
     glLoadIdentity()
     #El cubo rotara 35 grados con respecto a el vector (1,3,5)
-    glRotatef(gradosAradianes(35), 1, 3, 5)
+    # glRotatef(gradosAradianes(35), 1, 3, 5)
+    glScale(0.5, 0.95, 0.3)
 
-  elif key == "b" or key == "B":
+  elif key == "t" or key == "T":
     # Cada vez que se presiona b se aplica una transformacion
     # compuesta de rotar 15 grados con respecto a z, trasladar
     # 0.1 con respecto a y y escalar con respecto a y en 0.95. En
     glLoadIdentity()
     glRotatef(gradosAradianes(15), 0, 0, 1)
     glTranslatef(0.0, 0.1, 0.0)
-    glScale(0.5, 0.95, 0.3)
 
 
 def mouseEvent(botonMouse, estadoMouse, x, y):
