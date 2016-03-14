@@ -28,8 +28,17 @@ def initGL(width, height):
 
 def dibujarCuadrado():
 
+  glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
+  glLoadIdentity ()
+
+# -----Transformaciones de vista, se le da un estilo a la escena
+    #punto de vista
+  
+  glScalef (0.5, 0.5, 0.5)
+
+  glBegin(GL_QUADS)
   glColor3f(0.0, 0.0, 0.5)
-  glVertex3f( 0.0, 1.0, 0.0)
+  glVertex3f( 0.0,  1.0, 0.0)
 
   glColor3f(0.5, 0.0, 0.0)
   glVertex3f(-1.0, -1.0, 0.0)
@@ -40,6 +49,8 @@ def dibujarCuadrado():
   glColor3f(0.5, 0.5, 0.0)
   glVertex3f( 1.0, 1.0, 1.0)
 
+  glEnd()
+
 def gradosAradianes(grados):
   return (grados*pi)/180
 
@@ -47,28 +58,25 @@ def gradosAradianes(grados):
 contador = 0
 def keyPressed(*args):
   key = args[0]
-
   if key == "r" or key =="R":
-    matrizRotacion = [1, 0, 0, 0, 0, cos(gradosAradianes(30)), sin(gradosAradianes(30)), 0, 0, -sin(gradosAradianes(30)), cos(gradosAradianes(30)), 0, 0, 0, 0, 1]
+    glLoadIdentity()
+    # cada vez que se presiona r la figura rota 20 grados con respecto a x
+    matrizRotacion = [1, 0, 0, 0, 0, cos(gradosAradianes(20)), sin(gradosAradianes(20)), 0, 0, -sin(gradosAradianes(20)), cos(gradosAradianes(20)), 0, 0, 0, 0, 1]
     glMultMatrixf(matrizRotacion)
-    #glRotatef(gradosAradianes(30), 1, 0, 0)
-  elif key == "t" or key =="T":
-    global contador
-    matrizTraslacion = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0.1, 0.2, 0, 1]
-    devolverse = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, -0.3, -0.6, 0, 1]
 
-    if contador == 0 or contador == 1 or contador == 2:
-      glMultMatrixf(matrizTraslacion)
-      contador += 1
-      #glTranslatef(0.1, 0.2, 0.0)
-    else:
-      glMultMatrixf(devolverse)
-      contador = 0
-      #glTranslatef(-0.3, -0.6, 0.0)
+  elif key == "s" or key == "s":
+    glLoadIdentity()
+    #El cubo rotara 35 grados con respecto a el vector (1,3,5)
+    glRotatef(gradosAradianes(35), 1, 3, 5)
 
-  elif key == "s" or key == "S":
-    matrizShade = [1, 0.3, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]#matriz shade calculada a mano
-    glMultMatrixf(matrizShade)
+  elif key == "b" or key == "B":
+    # Cada vez que se presiona b se aplica una transformacion
+    # compuesta de rotar 15 grados con respecto a z, trasladar
+    # 0.1 con respecto a y y escalar con respecto a y en 0.95. En
+    glLoadIdentity()
+    glRotatef(gradosAradianes(15), 0, 0, 1)
+    glTranslatef(0.0, 0.1, 0.0)
+    glScale(0.5, 0.95, 0.3)
 
 #Funcion que me imprime la matriz actual
 def imprimirMatriz():
