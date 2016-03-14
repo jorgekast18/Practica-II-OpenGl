@@ -27,9 +27,18 @@ def initGL(width, height):
   glMatrixMode(GL_PROJECTION)
 
 def dibujarCuadrado():
-  glClear (GL_COLOR_BUFFER_BIT)
-  glutSolidCube(0.5)
-  glFlush ()
+
+  glColor3f(0.0, 0.0, 0.5)
+  glVertex3f( 0.0, 1.0, 0.0)
+
+  glColor3f(0.5, 0.0, 0.0)
+  glVertex3f(-1.0, -1.0, 0.0)
+
+  glColor3f(0.0, 0.5, 0.0)
+  glVertex3f( 1.0, -1.0, 0.0)
+
+  glColor3f(0.5, 0.5, 0.0)
+  glVertex3f( 1.0, 1.0, 1.0)
 
 def gradosAradianes(grados):
   return (grados*pi)/180

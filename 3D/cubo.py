@@ -7,11 +7,11 @@ from math import sin
 from math import cos
 from math import pi
 # ====================================================================
-#						      FUNCIONES
+#                 FUNCIONES
 # gradosAradianes -->
 #
 # ====================================================================
-# 								DATOS
+#                 DATOS
 # Nombre : Jorge A. Castanio, Sebastian Velasquez, Oscar Eduardo Ramirez
 # Codigo : 1153641, -----, -----
 # Plan: Ingenieria de Sistemas
